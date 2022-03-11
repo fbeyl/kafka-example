@@ -1,0 +1,9 @@
+SH
+# from CloudKarafka downloadable txt file
+export CLOUDKARAFKA_BROKERS=<broker uri;
+export CLOUDKARAFKA_USERNAME=<user>;
+export CLOUDKARAFKA_PASSWORD=<password>;
+export CLOUDKARAFKA_TOPIC_PREFIX=<topic prefix>;
+#
+cd <folder containing jar + stdparm file>;
+java -jar kafkaExample-1.0-SNAPSHOT-jar-with-dependencies.jar;

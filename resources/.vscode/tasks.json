@@ -1,0 +1,43 @@
+{
+	"version": "2.0.0",
+	"options": {
+		"env": {
+		  "CLOUDKARAFKA_BROKERS": "< brokers >",
+		  "CLOUDKARAFKA_USERNAME": "< user >",
+		  "CLOUDKARAFKA_PASSWORD": "< password >",
+		  "CLOUDKARAFKA_TOPIC_PREFIX": "< topic prefix >"
+		},
+	},
+	"tasks": [
+		{
+			"label": "KafkaExample:Deploy to z/OS",
+			"type": "shell",
+			"command": "zowe zos-files upload file-to-uss \"target/kafkaExample-1.0-SNAPSHOT-jar-with-dependencies.jar\" \"< uss folder >/kafkaExample-1.0-SNAPSHOT-jar-with-dependencies.jar\" -b",
+			"presentation": {
+				"reveal": "always",
+				"panel": "new"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "KafkaExample:Submit to z/OS",
+			"type": "shell",
+			"command": "zowe zos-jobs submit local-file \"resources/job/runRemoteOnzOS.jcl\"",
+			"presentation": {
+				"reveal": "always",
+				"panel": "new"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "KafkaExample:Run local",
+			"type": "shell",
+			"command": "java -jar 'target/kafkaExample-1.0-SNAPSHOT-jar-with-dependencies.jar';",
+			"presentation": {
+				"reveal": "always",
+				"panel": "new"
+			},
+			"problemMatcher": []
+		}
+	]
+}
